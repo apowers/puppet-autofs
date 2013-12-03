@@ -1,0 +1,8 @@
+name    'puppet-autofs'
+version '0.0.0'
+source 'https://github.com/seattle-biomed/puppet-autofs'
+author 'Seattle Biomedical Research Institute'
+license 'MIT'
+summary 'UNKNOWN'
+description 'UNKNOWN'
+project_page 'https://github.com/puppet/puppet-autofs'
