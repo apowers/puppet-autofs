@@ -6,7 +6,7 @@ class autofs (
   $config_ensure  = 'present',
   $config_options = hash([]),
   $config_maps    = hash([]),
-  $package_ensure = true,
+  $package_ensure = 'installed',
   $service_ensure = 'running',
   $service_enable = true,
 ) {
