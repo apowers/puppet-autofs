@@ -8,6 +8,11 @@ class autofs::config (
     $maps     = $autofs::config_maps,
 ) {
   include autofs::params
+
+  file { $autofs::params::config_directory:
+    ensure => 'directory'
+  }
+
   file { $autofs::params::config_file:
     ensure  => $ensure,
     mode    => '0444',

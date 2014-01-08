@@ -13,6 +13,7 @@ This is the autofs module.
 # Synopsis
 
   Install and manage autofs service.
+  Loads configuration '/etc/auto.master.d/*.autofs' by default.
 
 # Parameters
 
@@ -31,19 +32,15 @@ Basic Installation
 
 Parameterized Installation
 
-  $config_options = {
-    '/home' => '/etc/auto.home'
-  }
-
   class { '::autofs':
     config_ensure  => 'present',
-    config_options => $config_options,
+    config_options => ['+dir:/etc/auto.master.d'],
     package_ensure => 'true',
     service_ensure => 'running',
     service_enable => 'true',
   }
 
-  ::autofs::map_file { '/etc/auto.home':
+  ::autofs::map_file { '/etc/auto.master.d/home.autofs':
     mounts => ['*  rw  server:/home/&']
   }
 
@@ -52,10 +49,8 @@ Installation with Hiera
   ---
   class:  - autofs
   autofs::config::ensure:  'present'
-  autofs::config::options:
-    '/home': '/etc/auto.home'
   autofs::config::maps:
-    '/etc/auto.home':
+    '/etc/auto.master.d/home.autofs':
       mounts:
         - '*  rw  server:/home/&'
   autofs::package::ensure:  'true'
