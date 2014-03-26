@@ -1,5 +1,5 @@
 # This file is managed by puppet.
 # Local changes will be reverted automatically.
 #
-<% @options.each do |option,value| %>
+<% @options.sort.each do |option,value| %>
 <%= option %> <%= value %><% end %>
